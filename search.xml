@@ -1,35 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
+<search>
   
     
     <entry>
-      <title><![CDATA[Hello World]]></title>
-      <url>/2017/04/24/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> blog测试 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-        
+      <title></title>
+      <url>%2F2017%2F05%2F08%2Fwindows10%20%E5%85%B3%E9%97%AD%E5%BF%AB%E9%80%9F%E8%AE%BF%E9%97%AE%2F</url>
+      <content type="text"><![CDATA[title: windows10 关闭快速访问tags: [Windows10],[快速访问]categories: 操作系统date: 2017-05-08 15:24:46 ##操作步骤: * 1.win+R,呼出&quot;运行&quot;对话框,输入control,然后&quot;回车&quot; ![](http://opmii2ym7.bkt.clouddn.com/17-5-8/68340-file_1494229421871_b791.png) * 2.在打开的&quot;控制面板&quot;中,鼠标单击&quot;外观和个性化&quot; ![](http://opmii2ym7.bkt.clouddn.com/17-5-8/65228338-file_1494229585698_f138.png) * 3.鼠标单击&quot;文件资源管理器选项&quot; ![](http://opmii2ym7.bkt.clouddn.com/17-5-8/53703688-file_1494229667822_eb2e.png) * 4.&quot;常规&quot;选项的设置:如图所示设置,即可! ![](http://opmii2ym7.bkt.clouddn.com/17-5-8/36624074-file_1494229813916_1e1a.png) * 5.完成,请自行打开&quot;资源管理器&quot;查看效果]]></content>
     </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>%2F2017%2F04%2F24%2Fhello-world%2F</url>
+      <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    </entry>
+
     
   
   
