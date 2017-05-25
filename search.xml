@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[设置AndroidStudio启动时打开welcome界面]]></title>
       <url>%2F2017%2F05%2F25%2F%E8%AE%BE%E7%BD%AEAndroidStudio%E5%90%AF%E5%8A%A8%E6%97%B6%E6%89%93%E5%BC%80welcome%E7%95%8C%E9%9D%A2%2F</url>
-      <content type="text"><![CDATA[简单明了的说下如何让AndroidStudio每次启动都打开欢迎界面,可以去选择打开最近的项目 如果是首次打开AndroidStudio,需要这么干,看图 如果不是,需要这么干,看图![](http://opmii2ym7.bkt.clouddn.com/17-5-25/49320190.jpg) 接下来,需要这么干,看图![](http://opmii2ym7.bkt.clouddn.com/17-5-25/22883003.jpg) 接下来,apply–ok,重启AndroidStudio看效果吧]]></content>
+      <content type="text"><![CDATA[简单明了的说下如何让AndroidStudio每次启动都打开欢迎界面,可以去选择打开最近的项目 如果是首次打开AndroidStudio,需要这么干,看图 如果不是,需要这么干,看图 接下来,需要这么干,看图 接下来,apply–ok,重启AndroidStudio看效果吧]]></content>
     </entry>
 
     
