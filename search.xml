@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Android解决webview加载文档乱码]]></title>
+      <url>%2F2017%2F06%2F20%2FAndroid%E8%A7%A3%E5%86%B3webview%E5%8A%A0%E8%BD%BD%E6%96%87%E6%A1%A3%E4%B9%B1%E7%A0%81%2F</url>
+      <content type="text"><![CDATA[项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题.经过一番摸索,最终找到一味”良药”,问题解决!! 使用场景 //此处省略n行代码 string txtUrl="http://xxx.xx.xx/xx.txt"; webview.loadUrl(txtUrl); ### 解决办法 * 目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了! if (Build.MANUFACTURER.equals("samsung")||Build.MANUFACTURER.equals ("HTC")){ webView.getSettings().setDefaultTextEncodingName("GBK"); }]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[设置AndroidStudio启动时打开welcome界面]]></title>
       <url>%2F2017%2F05%2F25%2F%E8%AE%BE%E7%BD%AEAndroidStudio%E5%90%AF%E5%8A%A8%E6%97%B6%E6%89%93%E5%BC%80welcome%E7%95%8C%E9%9D%A2%2F</url>
       <content type="text"><![CDATA[简单明了的说下如何让AndroidStudio每次启动都打开欢迎界面,可以去选择打开最近的项目 如果是首次打开AndroidStudio,需要这么干,看图 如果不是,需要这么干,看图 接下来,需要这么干,看图 接下来,apply–ok,重启AndroidStudio看效果吧]]></content>
