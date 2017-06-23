@@ -1,27 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
+<search> 
   
     
     <entry>
       <title><![CDATA[Android解决webview加载文档乱码]]></title>
-      <url>%2F2017%2F06%2F21%2FAndroid%E8%A7%A3%E5%86%B3webview%E5%8A%A0%E8%BD%BD%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3%E4%B9%B1%E7%A0%81%2F</url>
-      <content type="text"><![CDATA[项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题.经过一番摸索,最终找到一味”良药”,问题解决!! 使用场景 //此处省略n行代码 string txtUrl="http://xxx.xx.xx/xx.txt"; webview.loadUrl(txtUrl); ### 解决办法 * 目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了! if (Build.MANUFACTURER.equals("samsung")||Build.MANUFACTURER.equals ("HTC")){ webView.getSettings().setDefaultTextEncodingName("GBK"); }]]></content>
-    </entry>
+      <url>/2017/06/21/Android%E8%A7%A3%E5%86%B3webview%E5%8A%A0%E8%BD%BD%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3%E4%B9%B1%E7%A0%81/</url>
+      <content type="html"><![CDATA[<p>项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题.经过一番摸索,最终找到一味”良药”,问题解决!!<br><a id="more"></a></p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><pre>
+    //此处省略n行代码     
+        string txtUrl="http://xxx.xx.xx/xx.txt";
+    webview.loadUrl(txtUrl);
+</pre>
+### 解决办法
 
+* 目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了!
+
+<pre>
+    if (Build.MANUFACTURER.equals("samsung")||Build.MANUFACTURER.equals   ("HTC")){
+          webView.getSettings().setDefaultTextEncodingName("GBK");
+           }
+</pre>
+
+
+
+
+
+
+]]></content>
+      
+        <categories>
+            
+            <category> android </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Android </tag>
+            
+            <tag> webview </tag>
+            
+        </tags>
+        
+    </entry>
     
     <entry>
       <title><![CDATA[设置AndroidStudio启动时打开welcome界面]]></title>
-      <url>%2F2017%2F05%2F25%2F%E8%AE%BE%E7%BD%AEAndroidStudio%E5%90%AF%E5%8A%A8%E6%97%B6%E6%89%93%E5%BC%80welcome%E7%95%8C%E9%9D%A2%2F</url>
-      <content type="text"><![CDATA[简单明了的说下如何让AndroidStudio每次启动都打开欢迎界面,可以去选择打开最近的项目 如果是首次打开AndroidStudio,需要这么干,看图 如果不是,需要这么干,看图 接下来,需要这么干,看图 接下来,apply–ok,重启AndroidStudio看效果吧]]></content>
+      <url>/2017/05/25/%E8%AE%BE%E7%BD%AEAndroidStudio%E5%90%AF%E5%8A%A8%E6%97%B6%E6%89%93%E5%BC%80welcome%E7%95%8C%E9%9D%A2/</url>
+      <content type="html"><![CDATA[<p>简单明了的说下如何让AndroidStudio每次启动都打开欢迎界面,可以去选择打开最近的项目<br><a id="more"></a></p>
+<h3 id="如果是首次打开AndroidStudio-需要这么干-看图"><a href="#如果是首次打开AndroidStudio-需要这么干-看图" class="headerlink" title="如果是首次打开AndroidStudio,需要这么干,看图"></a>如果是首次打开AndroidStudio,需要这么干,看图</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-25/48704992.jpg" alt=""><br><img src="http://opmii2ym7.bkt.clouddn.com/17-5-25/87585796.jpg" alt=""></p>
+<h3 id="如果不是-需要这么干-看图"><a href="#如果不是-需要这么干-看图" class="headerlink" title="如果不是,需要这么干,看图"></a>如果不是,需要这么干,看图</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-25/49320190.jpg" alt=""></p>
+<h3 id="接下来-需要这么干-看图"><a href="#接下来-需要这么干-看图" class="headerlink" title="接下来,需要这么干,看图"></a>接下来,需要这么干,看图</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-25/22883003.jpg" alt=""></p>
+<h3 id="接下来-apply–ok-重启AndroidStudio看效果吧"><a href="#接下来-apply–ok-重启AndroidStudio看效果吧" class="headerlink" title="接下来,apply–ok,重启AndroidStudio看效果吧"></a>接下来,apply–ok,重启AndroidStudio看效果吧</h3>]]></content>
+      
+        <categories>
+            
+            <category> Android Studio日常使用 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> AndroidStudio </tag>
+            
+        </tags>
+        
     </entry>
-
     
     <entry>
       <title><![CDATA[windows10下关闭快速访问]]></title>
-      <url>%2F2017%2F05%2F08%2Fwindows10%E4%B8%8B%E5%85%B3%E9%97%AD%E5%BF%AB%E9%80%9F%E8%AE%BF%E9%97%AE%2F</url>
-      <content type="text"><![CDATA[最近在使用Windows10 系统时,很不喜欢”快速访问”这个功能,于是摸索了下,果断关闭.在此简单记录下操作过程. win+R,呼出”运行”对话框,输入control,然后”回车” 在打开的”控制面板”中,鼠标单击”外观和个性化” 鼠标单击”文件资源管理器选项” “常规”选项的设置:如图所示设置,即可! 完成,请自行打开”资源管理器”查看效果]]></content>
+      <url>/2017/05/08/windows10%E4%B8%8B%E5%85%B3%E9%97%AD%E5%BF%AB%E9%80%9F%E8%AE%BF%E9%97%AE/</url>
+      <content type="html"><![CDATA[<p>最近在使用Windows10 系统时,很不喜欢”快速访问”这个功能,于是摸索了下,果断关闭.在此简单记录下操作过程.<br><a id="more"></a></p>
+<h3 id="win-R-呼出”运行”对话框-输入control-然后”回车”"><a href="#win-R-呼出”运行”对话框-输入control-然后”回车”" class="headerlink" title="win+R,呼出”运行”对话框,输入control,然后”回车”"></a>win+R,呼出”运行”对话框,输入control,然后”回车”</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-8/68340-file_1494229421871_b791.png" alt=""></p>
+<h3 id="在打开的”控制面板”中-鼠标单击”外观和个性化”"><a href="#在打开的”控制面板”中-鼠标单击”外观和个性化”" class="headerlink" title="在打开的”控制面板”中,鼠标单击”外观和个性化”"></a>在打开的”控制面板”中,鼠标单击”外观和个性化”</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-8/65228338-file_1494229585698_f138.png" alt=""></p>
+<h3 id="鼠标单击”文件资源管理器选项”"><a href="#鼠标单击”文件资源管理器选项”" class="headerlink" title="鼠标单击”文件资源管理器选项”"></a>鼠标单击”文件资源管理器选项”</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-8/53703688-file_1494229667822_eb2e.png" alt=""></p>
+<h3 id="“常规”选项的设置-如图所示设置-即可"><a href="#“常规”选项的设置-如图所示设置-即可" class="headerlink" title="“常规”选项的设置:如图所示设置,即可!"></a>“常规”选项的设置:如图所示设置,即可!</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-8/36624074-file_1494229813916_1e1a.png" alt=""></p>
+<h3 id="完成-请自行打开”资源管理器”查看效果"><a href="#完成-请自行打开”资源管理器”查看效果" class="headerlink" title="完成,请自行打开”资源管理器”查看效果"></a>完成,请自行打开”资源管理器”查看效果</h3>]]></content>
+      
+        <categories>
+            
+            <category> 操作系统 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Windows10 </tag>
+            
+            <tag> 快速访问 </tag>
+            
+        </tags>
+        
     </entry>
-
     
   
   
