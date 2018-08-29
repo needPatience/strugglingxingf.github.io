@@ -1,133 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
+<search>
   
     
     <entry>
       <title><![CDATA[android H5无法定位问题]]></title>
-      <url>/2018/08/29/android-H5%E6%97%A0%E6%B3%95%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<p>在实际项目中遇到的问题,webview加载h5页面,h5页面使用的是navigator.geolocation.getCurrentPosition方法获取位置信息,在android 4.4设备上能够正常定位,但是在android 7.0设备上无任何响应.将解决的过程大体做个记录~~~<br><a id="more"></a></p>
-<h2 id="前端定位代码"><a href="#前端定位代码" class="headerlink" title="前端定位代码"></a>前端定位代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 通过浏览器获取定位</div><div class="line"> */</div><div class="line">function getGPS() &#123;</div><div class="line">    if (navigator.geolocation) &#123;</div><div class="line">        navigator.geolocation.getCurrentPosition(function(position) &#123;</div><div class="line">            longitude = position.coords.longitude;</div><div class="line">            latitude = position.coords.latitude;</div><div class="line">            convert2amap(longitude, latitude, &quot;&quot;);</div><div class="line">        &#125;, onError);</div><div class="line">    &#125; else &#123;</div><div class="line">        alert(&quot;提示：您的客户端不支持获取定位信息，请升级或联系管理员！&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function onError(error) &#123;</div><div class="line">    switch (error.code) &#123;</div><div class="line">    case 1:</div><div class="line">        alert(&quot;位置服务被拒绝&quot;);</div><div class="line">        break;</div><div class="line">    case 2:</div><div class="line">        handleH5ForIOS10();</div><div class="line">        // alert(&quot;暂时获取不到位置信息&quot;);</div><div class="line">        break;</div><div class="line">    case 3:</div><div class="line">        alert(&quot;获取信息超时&quot;);</div><div class="line">        break;</div><div class="line">    case 4:</div><div class="line">        alert(&quot;未知错误&quot;);</div><div class="line">        break;</div><div class="line">    default:</div><div class="line">        alert(JSON.stringify(error));</div><div class="line">        break;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="配置权限"><a href="#配置权限" class="headerlink" title="配置权限"></a>配置权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot; /&gt;</div><div class="line">    &lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;</div><div class="line">    &lt;uses-permission android:name=&quot;android.permission.ACCESS_GPS&quot; /&gt;</div></pre></td></tr></table></figure>
-<h2 id="在-WebChromeClient-中实现的方法"><a href="#在-WebChromeClient-中实现的方法" class="headerlink" title="在 WebChromeClient 中实现的方法"></a>在 WebChromeClient 中实现的方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  public void onGeolocationPermissionsShowPrompt(final String origin, final Callback callback) &#123;</div><div class="line">                   //一般会向用户给出一个请求定位权限的弹窗。第二个 boolean 类型的参数表示是否授予网页定位权限；而第三个 boolean 类型的参数则表示是否保留这个权限状态        </div><div class="line">                   callback.invoke(origin, true, true);</div><div class="line">                   super.onGeolocationPermissionsShowPrompt(origin, callback);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="webview设置"><a href="#webview设置" class="headerlink" title="webview设置"></a>webview设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">String databasePath = getContext().getApplicationContext()</div><div class="line">               .getDir(&quot;database&quot;, Context.MODE_PRIVATE).getPath();</div><div class="line">       settings.setDatabaseEnabled(true);</div><div class="line">       settings.setDatabasePath(databasePath);</div><div class="line">       settings.setGeolocationDatabasePath(databasePath);</div><div class="line">       settings.setDomStorageEnabled(true);</div><div class="line">       settings.setGeolocationEnabled(true);</div></pre></td></tr></table></figure>
-<h2 id="log"><a href="#log" class="headerlink" title="log"></a>log</h2>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">I/test: http://xx.xx.xx.xx:8088/app/attendance/js/sign_ec.js?201801311435: Line 153 : getCurrentPosition() and watchPosition() no longer work on insecure origins. To use this feature, you should consider switching your application to a secure origin, such as HTTPS. See https://goo.gl/rStTGz for more details.</div></pre></td></tr></table></figure>
-<p>其实log中已经明确给出了参考信息,访问<a href="https://goo.gl/rStTGz" target="_blank" rel="external">Chromium Projects</a>,获取到最关键的信息:就是需要<strong><em>页面支持https的访问(http不安全)</em></strong>.在配置了https以后,问题得到解决!<br><strong><em>备注:</em></strong> android 6.0 以后，需要动态的获取位置或者存储权限,代码就不贴出来了~~,需要的自行处理.</p>
-]]></content>
-      
-        <categories>
-            
-            <category> webview </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> webview </tag>
-            
-            <tag> android </tag>
-            
-            <tag> Html5 </tag>
-            
-            <tag> navigator.geolocation </tag>
-            
-        </tags>
-        
+      <url>%2F2018%2F08%2F29%2Fandroid-H5%E6%97%A0%E6%B3%95%E5%AE%9A%E4%BD%8D%E9%97%AE%E9%A2%98%2F</url>
+      <content type="text"><![CDATA[在实际项目中遇到的问题,webview加载h5页面,h5页面使用的是navigator.geolocation.getCurrentPosition方法获取位置信息,在android 4.4设备上能够正常定位,但是在android 7.0设备上无任何响应.将解决的过程大体做个记录~~~ 前端定位代码1234567891011121314151617181920212223242526272829303132333435/** * 通过浏览器获取定位 */function getGPS() &#123; if (navigator.geolocation) &#123; navigator.geolocation.getCurrentPosition(function(position) &#123; longitude = position.coords.longitude; latitude = position.coords.latitude; convert2amap(longitude, latitude, &quot;&quot;); &#125;, onError); &#125; else &#123; alert(&quot;提示：您的客户端不支持获取定位信息，请升级或联系管理员！&quot;); &#125;&#125;function onError(error) &#123; switch (error.code) &#123; case 1: alert(&quot;位置服务被拒绝&quot;); break; case 2: handleH5ForIOS10(); // alert(&quot;暂时获取不到位置信息&quot;); break; case 3: alert(&quot;获取信息超时&quot;); break; case 4: alert(&quot;未知错误&quot;); break; default: alert(JSON.stringify(error)); break; &#125;&#125; 配置权限123&lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot; /&gt; &lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt; &lt;uses-permission android:name=&quot;android.permission.ACCESS_GPS&quot; /&gt; 在 WebChromeClient 中实现的方法12345 public void onGeolocationPermissionsShowPrompt(final String origin, final Callback callback) &#123; //一般会向用户给出一个请求定位权限的弹窗。第二个 boolean 类型的参数表示是否授予网页定位权限；而第三个 boolean 类型的参数则表示是否保留这个权限状态 callback.invoke(origin, true, true); super.onGeolocationPermissionsShowPrompt(origin, callback);&#125; webview设置1234567String databasePath = getContext().getApplicationContext() .getDir(&quot;database&quot;, Context.MODE_PRIVATE).getPath(); settings.setDatabaseEnabled(true); settings.setDatabasePath(databasePath); settings.setGeolocationDatabasePath(databasePath); settings.setDomStorageEnabled(true); settings.setGeolocationEnabled(true); log 1I/test: http://xx.xx.xx.xx:8088/app/attendance/js/sign_ec.js?201801311435: Line 153 : getCurrentPosition() and watchPosition() no longer work on insecure origins. To use this feature, you should consider switching your application to a secure origin, such as HTTPS. See https://goo.gl/rStTGz for more details. 其实log中已经明确给出了参考信息,访问Chromium Projects,获取到最关键的信息:就是需要页面支持https的访问(http不安全).在配置了https以后,问题得到解决!备注: android 6.0 以后，需要动态的获取位置或者存储权限,代码就不贴出来了~~,需要的自行处理.]]></content>
     </entry>
+
     
     <entry>
       <title><![CDATA[Android解决webview加载在线文档乱码]]></title>
-      <url>/2017/06/21/Android%E8%A7%A3%E5%86%B3webview%E5%8A%A0%E8%BD%BD%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3%E4%B9%B1%E7%A0%81/</url>
-      <content type="html"><![CDATA[<p>项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题.经过一番摸索,最终找到一味”良药”,问题解决!!<br><a id="more"></a></p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><pre>
-    //此处省略n行代码     
-        string txtUrl="http://xxx.xx.xx/xx.txt";
-    webview.loadUrl(txtUrl);
-</pre>
-### 解决办法
-
-目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了!
-
-<pre>
-    if (Build.MANUFACTURER.equals("samsung")||Build.MANUFACTURER.equals   ("HTC")){
-          webView.getSettings().setDefaultTextEncodingName("GBK");
-           }
-</pre>
-
-
-
-
-
-
-]]></content>
-      
-        <categories>
-            
-            <category> android </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Android </tag>
-            
-            <tag> webview </tag>
-            
-        </tags>
-        
+      <url>%2F2017%2F06%2F21%2FAndroid%E8%A7%A3%E5%86%B3webview%E5%8A%A0%E8%BD%BD%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3%E4%B9%B1%E7%A0%81%2F</url>
+      <content type="text"><![CDATA[项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题.经过一番摸索,最终找到一味”良药”,问题解决!! 使用场景 //此处省略n行代码 string txtUrl="http://xxx.xx.xx/xx.txt"; webview.loadUrl(txtUrl); ### 解决办法 目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了! if (Build.MANUFACTURER.equals("samsung")||Build.MANUFACTURER.equals ("HTC")){ webView.getSettings().setDefaultTextEncodingName("GBK"); }]]></content>
     </entry>
+
     
     <entry>
       <title><![CDATA[设置AndroidStudio启动时打开welcome界面]]></title>
-      <url>/2017/05/25/%E8%AE%BE%E7%BD%AEAndroidStudio%E5%90%AF%E5%8A%A8%E6%97%B6%E6%89%93%E5%BC%80welcome%E7%95%8C%E9%9D%A2/</url>
-      <content type="html"><![CDATA[<p>简单明了的说下如何让AndroidStudio每次启动都打开欢迎界面,可以去选择打开最近的项目<br><a id="more"></a></p>
-<h3 id="如果是首次打开AndroidStudio-需要这么干-看图"><a href="#如果是首次打开AndroidStudio-需要这么干-看图" class="headerlink" title="如果是首次打开AndroidStudio,需要这么干,看图"></a>如果是首次打开AndroidStudio,需要这么干,看图</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-25/48704992.jpg" alt=""><br><img src="http://opmii2ym7.bkt.clouddn.com/17-5-25/87585796.jpg" alt=""></p>
-<h3 id="如果不是-需要这么干-看图"><a href="#如果不是-需要这么干-看图" class="headerlink" title="如果不是,需要这么干,看图"></a>如果不是,需要这么干,看图</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-25/49320190.jpg" alt=""></p>
-<h3 id="接下来-需要这么干-看图"><a href="#接下来-需要这么干-看图" class="headerlink" title="接下来,需要这么干,看图"></a>接下来,需要这么干,看图</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-25/22883003.jpg" alt=""></p>
-<h3 id="接下来-apply–ok-重启AndroidStudio看效果吧"><a href="#接下来-apply–ok-重启AndroidStudio看效果吧" class="headerlink" title="接下来,apply–ok,重启AndroidStudio看效果吧"></a>接下来,apply–ok,重启AndroidStudio看效果吧</h3>]]></content>
-      
-        <categories>
-            
-            <category> Android Studio日常使用 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> AndroidStudio </tag>
-            
-        </tags>
-        
+      <url>%2F2017%2F05%2F25%2F%E8%AE%BE%E7%BD%AEAndroidStudio%E5%90%AF%E5%8A%A8%E6%97%B6%E6%89%93%E5%BC%80welcome%E7%95%8C%E9%9D%A2%2F</url>
+      <content type="text"><![CDATA[简单明了的说下如何让AndroidStudio每次启动都打开欢迎界面,可以去选择打开最近的项目 如果是首次打开AndroidStudio,需要这么干,看图 如果不是,需要这么干,看图 接下来,需要这么干,看图 接下来,apply–ok,重启AndroidStudio看效果吧]]></content>
     </entry>
+
     
     <entry>
       <title><![CDATA[windows10下关闭快速访问]]></title>
-      <url>/2017/05/08/windows10%E4%B8%8B%E5%85%B3%E9%97%AD%E5%BF%AB%E9%80%9F%E8%AE%BF%E9%97%AE/</url>
-      <content type="html"><![CDATA[<p>最近在使用Windows10 系统时,很不喜欢”快速访问”这个功能,于是摸索了下,果断关闭.在此简单记录下操作过程.<br><a id="more"></a></p>
-<h3 id="win-R-呼出”运行”对话框-输入control-然后”回车”"><a href="#win-R-呼出”运行”对话框-输入control-然后”回车”" class="headerlink" title="win+R,呼出”运行”对话框,输入control,然后”回车”"></a>win+R,呼出”运行”对话框,输入control,然后”回车”</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-8/68340-file_1494229421871_b791.png" alt=""></p>
-<h3 id="在打开的”控制面板”中-鼠标单击”外观和个性化”"><a href="#在打开的”控制面板”中-鼠标单击”外观和个性化”" class="headerlink" title="在打开的”控制面板”中,鼠标单击”外观和个性化”"></a>在打开的”控制面板”中,鼠标单击”外观和个性化”</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-8/65228338-file_1494229585698_f138.png" alt=""></p>
-<h3 id="鼠标单击”文件资源管理器选项”"><a href="#鼠标单击”文件资源管理器选项”" class="headerlink" title="鼠标单击”文件资源管理器选项”"></a>鼠标单击”文件资源管理器选项”</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-8/53703688-file_1494229667822_eb2e.png" alt=""></p>
-<h3 id="“常规”选项的设置-如图所示设置-即可"><a href="#“常规”选项的设置-如图所示设置-即可" class="headerlink" title="“常规”选项的设置:如图所示设置,即可!"></a>“常规”选项的设置:如图所示设置,即可!</h3><p><img src="http://opmii2ym7.bkt.clouddn.com/17-5-8/36624074-file_1494229813916_1e1a.png" alt=""></p>
-<h3 id="完成-请自行打开”资源管理器”查看效果"><a href="#完成-请自行打开”资源管理器”查看效果" class="headerlink" title="完成,请自行打开”资源管理器”查看效果"></a>完成,请自行打开”资源管理器”查看效果</h3>]]></content>
-      
-        <categories>
-            
-            <category> 操作系统 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Windows10 </tag>
-            
-            <tag> 快速访问 </tag>
-            
-        </tags>
-        
+      <url>%2F2017%2F05%2F08%2Fwindows10%E4%B8%8B%E5%85%B3%E9%97%AD%E5%BF%AB%E9%80%9F%E8%AE%BF%E9%97%AE%2F</url>
+      <content type="text"><![CDATA[最近在使用Windows10 系统时,很不喜欢”快速访问”这个功能,于是摸索了下,果断关闭.在此简单记录下操作过程. win+R,呼出”运行”对话框,输入control,然后”回车” 在打开的”控制面板”中,鼠标单击”外观和个性化” 鼠标单击”文件资源管理器选项” “常规”选项的设置:如图所示设置,即可! 完成,请自行打开”资源管理器”查看效果]]></content>
     </entry>
+
     
   
   
