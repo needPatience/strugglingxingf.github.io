@@ -12,7 +12,7 @@
     <entry>
       <title><![CDATA[Android解决webview加载在线文档乱码]]></title>
       <url>%2F2018%2F10%2F20%2FAndroid%E8%A7%A3%E5%86%B3webview%E5%8A%A0%E8%BD%BD%E5%9C%A8%E7%BA%BF%E6%96%87%E6%A1%A3%E4%B9%B1%E7%A0%81%2F</url>
-      <content type="text"><![CDATA[项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题. 使用场景 //此处省略n行代码 string txtUrl="http://xxx.xx.xx/xx.txt"; webview.loadUrl(txtUrl); ### 解决办法 目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了! if (Build.MANUFACTURER.equals("samsung")||Build.MANUFACTURER.equals ("HTC")){ webView.getSettings().setDefaultTextEncodingName("GBK"); }]]></content>
+      <content type="text"><![CDATA[项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题. 使用场景 //此处省略n行代码 string txtUrl="http://xxx.xx.xx/xx.txt"; webview.loadUrl(txtUrl); 解决办法目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了! if (Build.MANUFACTURER.equals("samsung")||Build.MANUFACTURER.equals ("HTC")){ webView.getSettings().setDefaultTextEncodingName("GBK"); }]]></content>
     </entry>
 
     

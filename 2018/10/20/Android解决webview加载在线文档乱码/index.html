@@ -116,7 +116,7 @@
 <meta property="og:url" content="http://getkk.top/2018/10/20/Android解决webview加载在线文档乱码/index.html">
 <meta property="og:site_name" content="原野">
 <meta property="og:description" content="项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题.">
-<meta property="og:updated_time" content="2019-01-21T05:12:53.220Z">
+<meta property="og:updated_time" content="2019-01-21T05:14:44.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android解决webview加载在线文档乱码">
 <meta name="twitter:description" content="项目开发中使用了Android原生的webview去加载一个在线的文档,但是在近期测试的过程中,发现在部分机器上存在乱码问题.">
@@ -463,10 +463,8 @@
         string txtUrl="http://xxx.xx.xx/xx.txt";
     webview.loadUrl(txtUrl);
 </pre>
-### 解决办法
 
-目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了!
-
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>目前就发现在三星和HTC的机器上会出现乱码,于是猜测他们的编码方式有猫腻,于是有以下举动,问题就解决了!</p>
 <pre>
     if (Build.MANUFACTURER.equals("samsung")||Build.MANUFACTURER.equals   ("HTC")){
           webView.getSettings().setDefaultTextEncodingName("GBK");
@@ -668,7 +666,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">1.</span> <span class="nav-text">使用场景</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">1.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法"><span class="nav-number">2.</span> <span class="nav-text">解决办法</span></a></li></ol></div>
             
 
           </div>
